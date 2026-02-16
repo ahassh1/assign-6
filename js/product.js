@@ -9,7 +9,7 @@ loadCategories();
 const displayCatogories = (categories) => {
   const categoryContainer = document.getElementById("category-container");
   categoryContainer.innerHTML = "";
-  const allCategories = ["All", ...categories];
+  const allCategories = ["All Product", ...categories];
 
   allCategories.forEach((category) => {
     const btnDiv = document.createElement("div");
@@ -17,5 +17,54 @@ const displayCatogories = (categories) => {
        <button class="btn bg-purple-500 rounded-md px-4 py-2 text-white ">${category}</button>
        `;
     categoryContainer.appendChild(btnDiv);
+  });
+};
+
+const loadCard = () => {
+  fetch("https://fakestoreapi.com/products")
+    .then((res) => res.json())
+    .then((json) => loadContainer(json));
+};
+loadCard();
+
+const loadContainer = (products) => {
+  console.log(products);
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = "";
+  products.forEach((product) => {
+    const allItem = document.createElement("div");
+
+    allItem.innerHTML = `
+ <div class="card bg-gray-50 w-full shadow-lg rounded-xl">
+  <figure class="flex justify-center p-6">
+    <img
+      class="w-34 h-42 md:w-38 md:h-46 object-cover bg-gray-200 rounded-lg shadow-md p-4"
+      src="${product.image}"
+      alt="${product.title}"
+    />
+  </figure>
+  <div class="card-body">
+    <div class="flex justify-between">
+      <div>
+      <p class="badge text-[11px] bg-purple-500 text-white">${product.category}</p>
+      </div>
+   <div>
+      <p class="card-title text-[14px]">
+       <i class="fa-solid fa-star"></i> ${product.rating.rate}
+        (${product.rating.count})
+        
+      </p>
+   </div>
+    </div>
+    <h5 class="text-gray-700 text-[14px]">${product.description.slice(0, 46)}..</h5>
+    <h4 class="text-gray-800 font-semibold text-[16px]">$${product.price}</h4>
+    <div class="card-actions justify-between flex">
+     <button class="px-4 py-2 text-[12px] bg-purple-500 text-white shadow-md rounded-md "><i class="fa-solid fa-eye"></i>Details</button>
+     <button class="text-[12px] px-4 py-2 bg-purple-500 text-white shadow-md rounded-md "><i class="fa-solid fa-cart-arrow-down"></i>Add</button>
+    </div>
+  </div>
+</div>
+    `;
+    cardContainer.appendChild(allItem);
   });
 };
