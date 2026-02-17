@@ -13,9 +13,15 @@ const displayCatogories = (categories) => {
     const btn = document.createElement("button");
     btn.textContent = category;
     btn.className =
-      "btn text-black border border-purple-700 rounded-md px-4 py-2 hover:bg-slate-50 hover:text-purple-500 hover:border-purple-600";
+      "btn  rounded-md px-4 py-2  text-purple-600 bg-slate-50 border-purple-600";
 
     btn.addEventListener("click", () => {
+      (categoryContainer.querySelectorAll("button").forEach((b) => {
+        b.classList.remove("text-black", "bg-purple-500");
+        b.classList.add("bg-state-50", "text-purple-600");
+      }),
+        btn.classList.add("text-black", "bg-purple-500"));
+      btn.classList.remove("bg-state-50", "text-purple-600");
       loadCategoryCard(category);
     });
 
