@@ -2,21 +2,24 @@ const loadCategories = () => {
   url = "https://fakestoreapi.com/products/categories";
   fetch(url)
     .then((res) => res.json())
-    .then((json) => displayCatogories(json));
+    .then((data) => displayCatogories(data));
 };
 loadCategories();
 
 const displayCatogories = (categories) => {
   const categoryContainer = document.getElementById("category-container");
-  categoryContainer.innerHTML = "";
-  const allCategories = ["All Product", ...categories];
 
-  allCategories.forEach((category) => {
-    const btnDiv = document.createElement("div");
-    btnDiv.innerHTML = `
-       <button class="btn bg-purple-500 rounded-md px-4 py-2 text-white ">${category}</button>
-       `;
-    categoryContainer.appendChild(btnDiv);
+  categories.forEach((category) => {
+    const btn = document.createElement("button");
+    btn.textContent = category;
+    btn.className =
+      "btn text-black border border-purple-700 rounded-md px-4 py-2 hover:bg-slate-50 hover:text-purple-500 hover:border-purple-600";
+
+    btn.addEventListener("click", () => {
+      loadCategoryCard(category);
+    });
+
+    categoryContainer.appendChild(btn);
   });
 };
 
@@ -25,10 +28,9 @@ const loadCard = () => {
     .then((res) => res.json())
     .then((json) => loadContainer(json));
 };
-loadCard();
+// loadCard();
 
 const loadContainer = (products) => {
-  console.log(products);
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
   products.forEach((product) => {
@@ -67,4 +69,12 @@ const loadContainer = (products) => {
     `;
     cardContainer.appendChild(allItem);
   });
+};
+
+const loadCategoryCard = (category) => {
+  fetch(
+    `https://fakestoreapi.com/products/category/${encodeURIComponent(category)}`,
+  )
+    .then((res) => res.json())
+    .then((data) => loadContainer(data));
 };
