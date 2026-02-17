@@ -12,17 +12,17 @@
 
 #### 4) What is the significance of `async`/`await` in fetching API data?
 
-#####in js code run in asyncronusly but async/await with fetch to handle https request that's very clean code and run synchronously
+##### in js code run in asyncronusly but async/await with fetch to handle https request that's very clean code and run synchronously
 
 #### 5) Explain the concept of Scope in JavaScript (Global, Function, Block).
 
 ##### Global scope like var that is delare any position of the body and function scope that's variable works inside the funcitoin and block scope like if else state ment inside the curly braces statement
 
-### WELCOME TO ( সহজ সরল সিম্পল ) ASSIGNMENT (SwiftCart E-Commerce)
+### ( সহজ সরল সিম্পল ) ASSIGNMENT (SwiftCart E-Commerce)
 
 ---
 
-####🛍️ API Endpoints
+🛍️ API Endpoints
 
 ---
 
@@ -63,3 +63,7 @@ https://fakestoreapi.com/products/1
 ```
 
 ---
+
+```https://sweet-beignet-b073cd.netlify.app/product
+
+```

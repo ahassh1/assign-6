@@ -67,7 +67,9 @@ const loadContainer = (products) => {
     <h5 class="text-gray-700 text-[14px]">${product.description.slice(0, 46)}..</h5>
     <h4 class="text-gray-800 font-semibold text-[16px]">$${product.price}</h4>
     <div class="card-actions justify-between flex">
-     <button class="px-4 py-2 text-[12px] bg-purple-500 text-white shadow-md rounded-md "><i class="fa-solid fa-eye"></i>Details</button>
+     <button  onclick="loadWordDetail(${product.id})"  class="px-4 py-2 text-[12px] bg-purple-500
+      text-white shadow-md rounded-md "><i class="fa-solid fa-eye"></i>Details
+      </button>
      <button class="text-[12px] px-4 py-2 bg-purple-500 text-white shadow-md rounded-md "><i class="fa-solid fa-cart-arrow-down"></i>Add</button>
     </div>
   </div>
